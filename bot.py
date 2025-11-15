@@ -126,3 +126,16 @@ async def send_post(msg: types.Message):
 
     await msg.reply("✔️ پست با موفقیت داخل کانال ارسال شد!")
     user_data.pop(user_id, None)
+from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Bot is running"
+
+def run():
+    app.run(host="0.0.0.0", port=10000)
+
+threading.Thread(target=run).start()
